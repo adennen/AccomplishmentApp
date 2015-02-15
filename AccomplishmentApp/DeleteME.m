@@ -18,6 +18,7 @@
 @implementation DeleteME
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]
         addObserver:self selector:@selector(keyboardWillShow:)
         name:UIKeyboardWillShowNotification object:nil];

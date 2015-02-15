@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableViewController.h"
+#import "DetailViewController.h"
+#import "UtilityFunctions.h"
 
 @interface TableContainerController : UIViewController
 

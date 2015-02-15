@@ -24,10 +24,14 @@
     // Set labels to the passed in string values
     itemTitleLabel.text = self.itemTitle;
     
-    itemTypeLabel.text = self.itemType;
+    if (self.itemType == (NSString*)[NSNull null]) {
+        itemTypeLabel.text = @"null";
+    } else {
+        itemTypeLabel.text = self.itemType;
+    }
     
     if (self.itemSummary == (NSString*)[NSNull null]) {
-        itemSummaryLabel.text = @"No summary has been set";
+        itemSummaryLabel.text = @"null";
     } else {
     itemSummaryLabel.text = self.itemSummary;
     }

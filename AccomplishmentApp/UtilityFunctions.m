@@ -10,7 +10,6 @@
 
 @implementation UtilityFunctions
 
-#pragma mark - Utility functions
 
 + (NSDictionary*)getJSONFromURL:(NSString*)inputURL {
     // 1
@@ -79,6 +78,35 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     printf("connectionDidFinishLoading called\n");
     //NSLog(@"Connection: %@", connection);
+}
+
+#pragma mark - Other functions
+
++ (void)notImplementedAlert {
+    UIAlertView *alert =
+    [[UIAlertView alloc] initWithTitle:@"Not implemented yet"
+                               message:nil
+                              delegate:nil
+                     cancelButtonTitle:@"OK"
+                     otherButtonTitles:nil];
+    [alert show];
+}
+
++ (NSString*)PrettyFormatDate:(NSString *)inputDate {
+    // "NSDateFormatter uses Unicode Technical Standard #35"
+    
+    // 1 Convert a string to a NSDate
+    NSDateFormatter *inputDateFormat = [[NSDateFormatter alloc] init];
+    [inputDateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [inputDateFormat setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [inputDateFormat setLocale:[NSLocale systemLocale]];
+    NSDate *myDate =[inputDateFormat dateFromString:inputDate];
+    
+    // 2 Convert NSDate to a pretty format
+    NSDateFormatter *outputDateFormat = [[NSDateFormatter alloc] init];
+    [outputDateFormat setDateFormat:@"EEE, MMM d yyyy"];
+    
+    return [outputDateFormat stringFromDate:myDate];;
 }
 
 @end

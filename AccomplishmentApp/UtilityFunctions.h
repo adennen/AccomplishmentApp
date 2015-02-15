@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface UtilityFunctions : NSObject
 
 + (NSDictionary*)getJSONFromURL:(NSString*)inputURL;
 + (void)post:(NSString*)post atURL:(NSString*)URLstring;
++ (void)notImplementedAlert;
++ (NSString*)PrettyFormatDate:(NSString *)inputDate;
     
 @end

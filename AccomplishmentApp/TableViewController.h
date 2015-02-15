@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UtilityFunctions.h"
 
 @interface TableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
     @public

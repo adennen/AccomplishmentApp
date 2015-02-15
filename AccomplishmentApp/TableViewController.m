@@ -7,7 +7,6 @@
 //
 
 #import "TableViewController.h"
-#import "UtilityFunctions.h"
 
 @interface TableViewController () {
 
@@ -93,7 +92,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.theRow = indexPath.row;
     self.theSection = indexPath.section;
-    [self.parentViewController performSegueWithIdentifier:@"MySegue" sender:self];
+    [self.parentViewController performSegueWithIdentifier:@"DetailView" sender:self];
 }
 
 // Edit mode
