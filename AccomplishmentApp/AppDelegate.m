@@ -16,7 +16,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // Devise setup
+    //[[DVSConfiguration sharedConfiguration] setServerURL:<#NSURL#>];
+    
     return YES;
 }
 

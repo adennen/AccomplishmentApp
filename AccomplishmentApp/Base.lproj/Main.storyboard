@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0VC-EQ-U7S">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -451,23 +452,23 @@
                                 <exclude reference="HX8-Uy-0r1"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="drG-GC-afl"/>
+                                <exclude reference="6A9-Nb-tp4"/>
+                                <exclude reference="ew2-Y7-6Xd"/>
+                                <exclude reference="id9-lw-Bef"/>
+                                <exclude reference="mQ4-P3-0L9"/>
+                                <exclude reference="UkA-rA-jk5"/>
+                                <exclude reference="Dwu-fh-8O7"/>
+                                <exclude reference="jFq-nc-Jx2"/>
+                                <exclude reference="2gv-qK-64M"/>
+                                <exclude reference="gPS-ag-Qmu"/>
+                                <exclude reference="jXw-yQ-5cD"/>
                                 <exclude reference="61h-3N-Xx1"/>
                                 <exclude reference="csF-xh-4fA"/>
                                 <exclude reference="lXV-Ap-HUu"/>
                                 <exclude reference="CoB-Am-o28"/>
                                 <exclude reference="GoC-Qv-bbE"/>
                                 <exclude reference="LnB-cj-GiT"/>
-                                <exclude reference="6A9-Nb-tp4"/>
-                                <exclude reference="ew2-Y7-6Xd"/>
-                                <exclude reference="id9-lw-Bef"/>
-                                <exclude reference="mQ4-P3-0L9"/>
-                                <exclude reference="drG-GC-afl"/>
-                                <exclude reference="2gv-qK-64M"/>
-                                <exclude reference="gPS-ag-Qmu"/>
-                                <exclude reference="jXw-yQ-5cD"/>
-                                <exclude reference="UkA-rA-jk5"/>
-                                <exclude reference="Dwu-fh-8O7"/>
-                                <exclude reference="jFq-nc-Jx2"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -482,23 +483,23 @@
                                 <include reference="HX8-Uy-0r1"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="drG-GC-afl"/>
+                                <include reference="6A9-Nb-tp4"/>
+                                <include reference="ew2-Y7-6Xd"/>
+                                <include reference="id9-lw-Bef"/>
+                                <include reference="mQ4-P3-0L9"/>
+                                <include reference="UkA-rA-jk5"/>
+                                <include reference="Dwu-fh-8O7"/>
+                                <include reference="jFq-nc-Jx2"/>
+                                <include reference="2gv-qK-64M"/>
+                                <include reference="gPS-ag-Qmu"/>
+                                <include reference="jXw-yQ-5cD"/>
                                 <include reference="61h-3N-Xx1"/>
                                 <include reference="csF-xh-4fA"/>
                                 <include reference="lXV-Ap-HUu"/>
                                 <include reference="CoB-Am-o28"/>
                                 <include reference="GoC-Qv-bbE"/>
                                 <include reference="LnB-cj-GiT"/>
-                                <include reference="6A9-Nb-tp4"/>
-                                <include reference="ew2-Y7-6Xd"/>
-                                <include reference="id9-lw-Bef"/>
-                                <include reference="mQ4-P3-0L9"/>
-                                <include reference="drG-GC-afl"/>
-                                <include reference="2gv-qK-64M"/>
-                                <include reference="gPS-ag-Qmu"/>
-                                <include reference="jXw-yQ-5cD"/>
-                                <include reference="UkA-rA-jk5"/>
-                                <include reference="Dwu-fh-8O7"/>
-                                <include reference="jFq-nc-Jx2"/>
                             </mask>
                         </variation>
                     </view>

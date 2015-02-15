@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import <Devise/Devise.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

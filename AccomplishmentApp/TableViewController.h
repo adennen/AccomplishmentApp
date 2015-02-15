@@ -16,6 +16,6 @@
 
 @property(strong, nonatomic) NSMutableArray *segueValues;
 
-@property int theRow;
-@property int theSection;
+@property NSInteger theRow;
+@property NSInteger theSection;
 @end

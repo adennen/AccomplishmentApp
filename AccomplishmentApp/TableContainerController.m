@@ -18,6 +18,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden: NO animated: YES];
     [self.navigationController setToolbarHidden: NO animated: YES];
 }
@@ -37,7 +38,7 @@
     if ([segue.identifier isEqualToString:@"MySegue"]) {
         TableViewController *tvc = sender;
         //int theSection = tvc.theSection;
-        int theRow = tvc.theRow;
+        NSInteger theRow = tvc.theRow;
         
         DetailViewController *vcToPush = segue.destinationViewController;
         
@@ -48,7 +49,7 @@
         // TODO: Pretty format the date
         // "It uses Unicode Technical Standard #35"
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ssZ"];
+        [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
         [dateFormat setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         [dateFormat setLocale:[NSLocale systemLocale]];
         
@@ -59,7 +60,7 @@
         
         // Now convert the date object to a good format
         NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
-        [dateFormat2 setDateFormat:@"EEE, MMM d, ''yy"];
+        [dateFormat2 setDateFormat:@"EEE, MMM d yyyy"];
         
         NSString *localDateString = [dateFormat2 stringFromDate:myDate];
         NSLog(@"localDateString: %@", localDateString);
