@@ -2,13 +2,13 @@
 platform :ios, '8.1'
 
 pod 'Devise', '~> 0.1.0'
-pod spec lint --sources='git@our-private-spec-repo:iOS/Specs.git,https://github.com/CocoaPods/Specs'
+#pod spec lint --sources='git@our-private-spec-repo:iOS/Specs.git,https://github.com/CocoaPods/Specs'
 
-target 'AccomplishmentApp' do
+target 'WellRead' do
 
 end
 
-target 'AccomplishmentAppTests' do
+target 'WellReadTests' do
 
 end
 
