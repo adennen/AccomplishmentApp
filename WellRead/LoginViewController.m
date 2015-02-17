@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Aron Dennen. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 
-@interface ViewController () {
+@interface LoginViewController () {
     NSTimer *loginTimer;
 }
 @property (weak, nonatomic) IBOutlet UIView *loginBox;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -18,46 +18,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.segueValues = [NSMutableArray arrayWithArray: @[
-                        @[
-                             @{@"itemTitle":@"1984 - George Orwell", @"completionDate":@"Jan 3rd, 2015",
-                               @"mediaType":@"book", @"webAddress":@"http://www.amazon.com/1984-Signet-Classics-George-Orwell/dp/0451524934/" },
-                             
-                             @{@"itemTitle":@"The Roman Empire", @"completionDate":@"Jan 3rd, 2015",
-                               @"mediaType":@"video", @"webAddress":@"http://www.amazon.com/Rome-Order-Chaos-Years-Trial/dp/B002R9LQ6O/" },
-                             
-                             @{@"itemTitle":@"1984 - George Orwell", @"completionDate":@"Jan 3rd, 2015",
-                               @"mediaType":@"video", @"webAddress":@"http://www.amazon.com/1984-John-Hurt/dp/B0039O8AQK/" },
-                         ],
-                        @[
-                             @{@"itemTitle":@"1985 - Anthony Burgess", @"completionDate":@"Jan 9th, 2015",
-                               @"mediaType":@"book", @"webAddress":@"http://www.amazon.com/1985/dp/1846689198/" }
-                         ],
-                        @[
-                             @{@"itemTitle":@"Marvel 1985", @"completionDate":@"Jan 18th, 2015",
-                               @"mediaType":@"book", @"webAddress":@"http://www.amazon.com/Marvel-1985-Mark-Millar-ebook/dp/B00AAJR14O/" },
-                         
-                             @{@"itemTitle":@"Programming iOS 7", @"completionDate":@"Jan 18th, 2015",
-                               @"mediaType":@"video", @"webAddress":@"http://www.amazon.com/Programming-iOS-7-Matt-Neuburg/dp/1449372341/" }
-                         ]
-                        ]];
     
+    // Init stuff
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
+    completionsArray = [[NSMutableArray alloc] init];
+    
+    [self refresh];
+}
+
+// Just added to test if embed is necessary
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden: NO animated: YES];
+    [self.navigationController setToolbarHidden: NO animated: YES];
+}
+
+- (void)refresh {
     // TODO: multithreading
+    
+    [self.refreshControl beginRefreshing];
     
     // Get JSON data into NSDictionary
     completionsDict = [UtilityFunctions getJSONFromURL:@"https://blooming-earth-7934.herokuapp.com/completions"];
-
     
-    //NSLog(@"Count: %zd", completionsArray.count);
-    completionsArray = (NSArray*)completionsDict[@"completions"];
-    //NSLog(@"Count: %zd", completionsArray.count);
+    // Populate the mutable array
+    NSArray *completions = (NSArray*)completionsDict[@"completions"];
     
-    NSLog(@"completions array: %@", completionsArray[1][@"title"]);
+    [completionsArray removeAllObjects];
     
-    
+    for (int i = 0; i < [completions count]; i++) {
+        [completionsArray addObject:completions[i]];
+    }
     
     [[self tableView] reloadData];
     //getField.text = [completionsArray lastObject][@"title"];
+    
+    [self.refreshControl endRefreshing];
 }
 
 
@@ -92,16 +93,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.theRow = indexPath.row;
     self.theSection = indexPath.section;
-    [self.parentViewController performSegueWithIdentifier:@"DetailView" sender:self];
+    [self performSegueWithIdentifier:@"DetailView" sender:self];
 }
 
-// Edit mode
+// Table cell editing
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        NSLog(@"1. %@", NSStringFromClass([self.segueValues class]));
-        NSLog(@"2. %@", NSStringFromClass([self.segueValues[0] class]));
-        [self.segueValues[indexPath.section] removeObjectAtIndex:indexPath.row];
+        [completionsArray removeObjectAtIndex:indexPath.row];
+        // TODO: Delete from remote, test for success
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {}
 }
@@ -140,6 +139,28 @@
     cell.textLabel.text = completionsArray[indexPath.row][@"title"];
     
     return cell;	// And that's it
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"DetailView"]) {
+        TableViewController *tvc = sender;
+        //int theSection = tvc.theSection;
+        NSInteger theRow = tvc.theRow;
+        
+        DetailViewController *vcToPush = segue.destinationViewController;
+        
+        vcToPush.itemTitle = completionsArray[theRow][@"title"];
+        vcToPush.itemType = completionsArray[theRow][@"media_type"];
+        vcToPush.itemSummary = completionsArray[theRow][@"summary"];
+        vcToPush.itemCompleted = [UtilityFunctions PrettyFormatDate:
+                                  completionsArray[theRow][@"completed_at"]];
+    }
+    else if ([segue.identifier isEqualToString:@"InsertEditView"]) {
+        // Don't do anything
+    }
 }
 
 @end

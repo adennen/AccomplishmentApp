@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "UtilityFunctions.h"
+#import "DetailViewController.h"
+#import "InsertEditViewController.h"
 
 @interface TableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
     @public
     NSDictionary *completionsDict;
-    NSArray *completionsArray;
+    NSMutableArray *completionsArray;
 }
-
-@property(strong, nonatomic) NSMutableArray *segueValues;
 
 @property NSInteger theRow;
 @property NSInteger theSection;
+
+//@property (nonatomic,strong) UIRefreshControl *refreshControl;
+
 @end

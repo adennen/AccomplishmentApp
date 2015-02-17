@@ -12,7 +12,12 @@
 @interface UtilityFunctions : NSObject
 
 + (NSDictionary*)getJSONFromURL:(NSString*)inputURL;
+
 + (void)post:(NSString*)post atURL:(NSString*)URLstring;
++ (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data;
++ (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
++ (void)connectionDidFinishLoading:(NSURLConnection *)connection;
+
 + (void)notImplementedAlert;
 + (NSString*)PrettyFormatDate:(NSString *)inputDate;
     

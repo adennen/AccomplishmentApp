@@ -38,14 +38,15 @@
 
 #pragma mark - Web post request
 
+// TODO: Use threading
 + (void)post:(NSString*)post atURL:(NSString*)URLstring {
     // 1
-    // Convert post to data
+    // Convert post string to NSData
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [[NSNumber numberWithUnsignedInteger:[postData length]] stringValue];
     
     // 2
-    // Request
+    // Create urlrequest
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URLstring]];
     [request setHTTPMethod:@"POST"];
@@ -54,28 +55,28 @@
     [request setHTTPBody:postData];
     
     // 3
-    // Connection
+    // Connect
     NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-    if(conn) NSLog(@"Connection Successful");
-    else NSLog(@"Connection could not be made");
+    if(conn) NSLog(@"Connection successful");
+    else NSLog(@"Connection failed");
     
     // 4
     // Use delgate methods to receive data
 }
 
 // Post receive data
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
++ (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
     printf("didReceiveData called\n");
     NSLog(@"Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 }
 
 // Post error
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
++ (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     printf("didFailWithError called\n");
 }
 
 // Post finished loading
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
++ (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     printf("connectionDidFinishLoading called\n");
     //NSLog(@"Connection: %@", connection);
 }
@@ -95,14 +96,14 @@
 + (NSString*)PrettyFormatDate:(NSString *)inputDate {
     // "NSDateFormatter uses Unicode Technical Standard #35"
     
-    // 1 Convert a string to a NSDate
+    // 1 Convert string to NSDate
     NSDateFormatter *inputDateFormat = [[NSDateFormatter alloc] init];
     [inputDateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     [inputDateFormat setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     [inputDateFormat setLocale:[NSLocale systemLocale]];
     NSDate *myDate =[inputDateFormat dateFromString:inputDate];
     
-    // 2 Convert NSDate to a pretty format
+    // 2 Convert NSDate to pretty formatted string
     NSDateFormatter *outputDateFormat = [[NSDateFormatter alloc] init];
     [outputDateFormat setDateFormat:@"EEE, MMM d yyyy"];
     
