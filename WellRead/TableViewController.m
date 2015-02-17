@@ -119,7 +119,6 @@
 // Return the number of rows for a given section (Required method). "How many rows in each section?"
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //NSArray *myArray = (NSArray*)[self.segueValues objectAtIndex:section];
-    printf("numberOfRows called\n");
     return completionsArray.count;
 }
 
@@ -129,13 +128,12 @@
     
     // Configure the cell values
     
-    /*
-    NSString *mediaType = self.segueValues[indexPath.section][indexPath.row][@"mediaType"];
-    NSString *imageToUse = ([mediaType isEqualToString:@"book"]) ? @"book_PNG2116.png" : @"2000px-VHS_diagonal.svg";
-    
-    cell.textLabel.text = self.segueValues[indexPath.section][indexPath.row][@"itemTitle"];
-    cell.imageView.image = [UIImage imageNamed:imageToUse];
-     */
+    if (completionsArray[indexPath.row][@"media_type"] != [NSNull null]) {
+        NSString *mediaType = completionsArray[indexPath.row][@"media_type"];
+        NSString *imageToUse = ([mediaType isEqualToString:@"book"]) ? @"book_PNG2116.png" : @"2000px-VHS_diagonal.svg";
+        
+        cell.imageView.image = [UIImage imageNamed:imageToUse];
+    }
     cell.textLabel.text = completionsArray[indexPath.row][@"title"];
     
     return cell;	// And that's it

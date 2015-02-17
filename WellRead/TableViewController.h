@@ -20,6 +20,4 @@
 @property NSInteger theRow;
 @property NSInteger theSection;
 
-//@property (nonatomic,strong) UIRefreshControl *refreshControl;
-
 @end

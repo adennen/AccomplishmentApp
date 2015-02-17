@@ -324,7 +324,9 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Well Read" id="Cj1-U0-KjC"/>
+                    <navigationItem key="navigationItem" title="Well Read" id="Cj1-U0-KjC">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Y8H-iJ-kDz"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
