@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>09580231-993B-4779-9542-9D6CF58A674F</string>
+	<string>959115D3-C069-4033-AC74-57D6A9D6CDD1</string>
 	<key>IDESourceControlProjectName</key>
-	<string>AccomplishmentApp</string>
+	<string>WellRead</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>EACD7D44B72E9B3455017EDAD17A9F5FC6B60FE6</key>
-		<string>https://github.com/adennen/AccomplishmentApp.git</string>
+		<string>https://github.com/adennen/WellRead.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AccomplishmentApp.xcodeproj</string>
+	<string>WellRead.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>EACD7D44B72E9B3455017EDAD17A9F5FC6B60FE6</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/adennen/AccomplishmentApp.git</string>
+	<string>https://github.com/adennen/WellRead.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>EACD7D44B72E9B3455017EDAD17A9F5FC6B60FE6</string>
 			<key>IDESourceControlWCCName</key>
-			<string>AccomplishmentApp</string>
+			<string>WellRead</string>
 		</dict>
 	</array>
 </dict>

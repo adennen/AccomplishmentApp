@@ -56,12 +56,36 @@
     
     // 3
     // Connect
+    NSLog(@"The self object is: %@", self);
     NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     if(conn) NSLog(@"Connection successful");
     else NSLog(@"Connection failed");
     
     // 4
     // Use delgate methods to receive data
+}
+
+// TODO: Use threading
++ (void)put:(NSString*)put atURL:(NSString*)URLstring {
+    // 1
+    // Convert post string to NSData
+    NSData *putData = [put dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *putLength = [[NSNumber numberWithUnsignedInteger:[putData length]] stringValue];
+    
+    // 2
+    // Create urlrequest
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URLstring]];
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:putLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:putData];
+    
+    // 3
+    // Connect
+    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    if(conn) NSLog(@"Connection successful");
+    else NSLog(@"Connection failed");
 }
 
 // Post receive data
@@ -73,12 +97,30 @@
 // Post error
 + (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     printf("didFailWithError called\n");
+    NSLog(@"Error: %@", error.localizedFailureReason);
 }
 
 // Post finished loading
 + (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     printf("connectionDidFinishLoading called\n");
     //NSLog(@"Connection: %@", connection);
+}
+
+
++ (void)deleteAtURL:(NSString*)URLstring {
+    // 1
+    // Create urlrequest
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URLstring]];
+    [request setHTTPMethod:@"DELETE"];
+    
+    // TODO: Include auth token for user
+    
+    // 2
+    // Connect
+    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    if(conn) NSLog(@"Connection successful");
+    else NSLog(@"Connection failed");
 }
 
 #pragma mark - Other functions

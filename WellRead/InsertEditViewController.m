@@ -22,6 +22,10 @@
 
 @implementation InsertEditViewController
 
+// TODO:
+// Spinner for date and media type
+// Increase summary size to multiline
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -39,7 +43,9 @@
 - (IBAction)insertNewRecord:(id)sender {
     [UtilityFunctions post:[NSString stringWithFormat:@"completion[title]=%@&completion[media_type]=%@&completion[summary]=%@",
                 titleField.text, mediaField.text, summaryField.text]
-         atURL:@"https://blooming-earth-7934.herokuapp.com/completions"];
+         atURL:@"http://wellread.io/completions"];
+    
+    // TODO: Add insert view logic
     
     UIAlertView *alert =
     [[UIAlertView alloc] initWithTitle:@"Success?"
@@ -48,6 +54,26 @@
                      cancelButtonTitle:@"OK"
                      otherButtonTitles:nil];
     [alert show];
+}
+
+- (IBAction)updateExistingRecord:(id)sender {
+    // TODO: Get the ID of the record being edited from somewhere
+    NSString *updateURL = [NSString stringWithFormat:@"http://wellread.io/completions/%d", 4];
+    
+    [UtilityFunctions put:[NSString stringWithFormat:@"completion[title]=%@&completion[media_type]=%@&completion[summary]=%@",
+    titleField.text, mediaField.text, summaryField.text]
+    atURL:updateURL];
+    
+    // TODO: Check for actual success and update views accordingly
+    
+    UIAlertView *alert =
+    [[UIAlertView alloc] initWithTitle:@"Success?"
+                               message:nil
+                              delegate:nil
+                     cancelButtonTitle:@"OK"
+                     otherButtonTitles:nil];
+    [alert show];
+    
 }
 
 #pragma mark UITextFieldDelegate methods

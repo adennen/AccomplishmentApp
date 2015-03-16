@@ -18,7 +18,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Devise setup
-    //[[DVSConfiguration sharedConfiguration] setServerURL:<#NSURL#>];
+    NSURL *theURL = [NSURL URLWithString: @"http://wellread.io"];
+    [[DVSConfiguration sharedConfiguration] setServerURL:theURL];
     
     return YES;
 }

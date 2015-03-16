@@ -20,22 +20,28 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Devise (0.1.1):
+  - Bolts (1.1.4)
+  - Devise (0.1.2):
     - AFNetworking (~> 2.5.0)
+    - Facebook-iOS-SDK (~> 3.23)
     - ngrvalidator (~> 0.3.0)
     - UICKeyChainStore (~> 1.1)
     - XLForm (~> 2.1)
-  - ngrvalidator (0.3.0)
+  - Facebook-iOS-SDK (3.23.1):
+    - Bolts (~> 1.0)
+  - ngrvalidator (0.3.1)
   - UICKeyChainStore (1.1.1)
   - XLForm (2.1.0)
 
 DEPENDENCIES:
-  - Devise (~> 0.1.1)
+  - Devise (~> 0.1.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  Devise: e35616485a9e38faa2aeff4cb7cd3a6150b449e4
-  ngrvalidator: 54ba396847389858f867204e98158a45bbf2401f
+  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
+  Devise: 1b4c8cc833bca274d97c02deee456fc17a1b2d6c
+  Facebook-iOS-SDK: 89dae50e975ebab95a01b0962d27277fc9cf08fd
+  ngrvalidator: e8aaf658a57c40ac5c9ebb213e274164e261aff3
   UICKeyChainStore: ea8f9851811284c6b9ff5b2133acd53342127cc3
   XLForm: 7d6855fe88df37b44ea00da80cc0cf3a945cfb1b
 

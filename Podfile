@@ -1,5 +1,5 @@
-platform :ios, '8.1'
+platform :ios, '7.0'
 
 # Pod sources
 link_with 'WellRead', 'WellReadTests'
-pod 'Devise', '~> 0.1.1'
+pod 'Devise', '~> 0.1.2'

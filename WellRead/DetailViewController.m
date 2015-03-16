@@ -39,4 +39,8 @@
     itemCompletedLabel.text = self.itemCompleted;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+}
+
 @end

@@ -44,7 +44,7 @@
     [self.refreshControl beginRefreshing];
     
     // Get JSON data into NSDictionary
-    completionsDict = [UtilityFunctions getJSONFromURL:@"https://blooming-earth-7934.herokuapp.com/completions"];
+    completionsDict = [UtilityFunctions getJSONFromURL:@"http://wellread.io/completions"];
     
     // Populate the mutable array
     NSArray *completions = (NSArray*)completionsDict[@"completions"];
@@ -99,8 +99,16 @@
 // Table cell editing
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSString *deletionURL =
+        [NSString stringWithFormat:@"http://wellread.io/completions/%@",
+         completionsArray[indexPath.row][@"id"]];
+        
+        NSLog(@"Deletion URL:%@", deletionURL);
+        
+        [UtilityFunctions deleteAtURL:deletionURL];
+        
+        // TODO: Only delete if success!
         [completionsArray removeObjectAtIndex:indexPath.row];
-        // TODO: Delete from remote, test for success
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {}
 }
